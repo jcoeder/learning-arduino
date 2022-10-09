@@ -1,21 +1,21 @@
 //Create variables for the associated output pins
 const int greenLEDPin = 9;
-const int redLEDPin = 10;
-const int blueLEDPin = 11;
+const int redLEDPin = 11;
+const int blueLEDPin = 10;
 
 //Create variables for the associated sensor pins
-const int redSensorPin = A0;
-const int greenSensorPin = A1;
+const int greenSensorPin = A0;
+const int redSensorPin = A1;
 const int blueSensorPin = A2;
 
 //Set default values 
-int redValue = 0;
 int greenValue = 0;
+int redValue = 0;
 int blueValue = 0;
 
 //Set default sensor values
-int redSensorValue = 0;
 int greenSensorValue = 0;
+int redSensorValue = 0;
 int blueSensorValue = 0;
 
 
@@ -31,32 +31,34 @@ void setup() {
 }
 
 void loop() {
-  redSensorValue = analogRead(redSensorPin);
-  delay(500);
+  //Read the analog value of the sensor and wait .5 seconds
   greenSensorValue = analogRead(greenSensorPin);
   delay(500);
-  blueSensorValue = analogRead(blueSensorPin);
-  //blueSensorValue = 100;
+  //Read the analog value of the sensor and wait .5 seconds
+  redSensorValue = analogRead(redSensorPin);
   delay(500);
+  //Read the analog value of the sensor and wait .5 seconds
+  blueSensorValue = analogRead(blueSensorPin);
+  delay(500);
+  
   Serial.println("Raw Sensor Values");
-  Serial.println("red: ");
-  Serial.println(redSensorValue);
-  Serial.println("green: ");
+  Serial.println("Green: ");
   Serial.println(greenSensorValue);
-  Serial.println("blue: ");
+  Serial.println("Red: ");
+  Serial.println(redSensorValue);
+  Serial.println("Blue: ");
   Serial.println(blueSensorValue);
+  greenValue = greenSensorValue/4;
   redValue = redSensorValue/4;
   blueValue = blueSensorValue/4;
-  greenValue = greenSensorValue/4;
   Serial.println("Values");
-  Serial.println("red: ");
-  Serial.println(redValue);
-  Serial.println("green: ");
+  Serial.println("Green: ");
   Serial.println(greenValue);
-  Serial.println("blue: ");
+  Serial.println("Red: ");
+  Serial.println(redValue);
+  Serial.println("Blue: ");
   Serial.println(blueValue);
+  analogWrite(greenLEDPin, greenValue);
   analogWrite(redLEDPin, redValue);
   analogWrite(blueLEDPin, blueValue);
-  analogWrite(greenLEDPin, greenValue);
-  
 }
